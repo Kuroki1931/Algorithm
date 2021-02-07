@@ -9,11 +9,16 @@ def kaiten(str1, str2):
     else:
         return False
 
+
 """
 解答と同じ
 """
-    
+
+"""
+feedback後
+"""
 
 
-
-
+def kaiten(str1, str2):
+    str3 = str2 + str2
+    return len(str1) == len(str2) & isStubstring(str1, str3)

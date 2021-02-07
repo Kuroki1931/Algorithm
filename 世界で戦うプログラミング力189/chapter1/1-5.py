@@ -17,8 +17,7 @@ def check1(str1, str2):
             return True
         else:
             return False
-            
-            
+
     if len(str1)+1 == len(str2):
         # 挿入
         # 例: I'mTom I'm Tom
@@ -36,7 +35,7 @@ def check1(str1, str2):
             return True
         else:
             return False
-        
+
     if len(str1)-1 == len(str2):
         # 削除
         # 例: soccer socce
@@ -53,10 +52,11 @@ def check1(str1, str2):
         if str1 == str2:
             return True
         else:
-            return False   
+            return False
 
     else:
         return False
+
 
 # test
 print(check1('apple', 'bpple') == True)
@@ -65,13 +65,10 @@ print(check1('rion', 'human') == False)
 print(check1('pale', 'ple') == True)
 
 
-
-
-
 """
 以下解答参照後
 """
-#挿入と削除は文字を入れ替えればよいだけ。
+# 挿入と削除は文字を入れ替えればよいだけ。
 
 
 """
@@ -135,3 +132,48 @@ print(check2('rion', 'human') == False)
 print(check2('pale', 'ple') == True)
 """
 
+
+"""
+feedback後
+"""
+
+
+def compare_two_list(str1, str2):
+    if len(str1) == len(str2):
+        count = 0
+        for i in range(len(str1)):
+            if str1[i] == str2[i]:
+                count += 1
+
+        return count == len(str1) - 1
+
+    if len(str1)+1 == len(str2):
+        str1 += ' '
+
+        for i in range(len(str1)):
+            if str1[i] != str2[i]:
+                str2 = str2[:i] + str2[i+1:]
+                str1 = str1[:-1]
+                break
+
+        return str1 == str2
+
+    if len(str1)-1 == len(str2):
+        str2 += ' '
+
+        for i in range(len(str1)):
+            if str1[i] != str2[i]:
+                str1 = str1[:i] + str1[i+1:]
+                str2 = str2[:-1]
+                break
+
+        return str1 == str2
+
+    else:
+        return False
+
+# test
+
+
+def test_compare_two_list():
+    assert compare_two_list('pale', 'ple')
